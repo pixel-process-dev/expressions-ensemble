@@ -1,0 +1,38 @@
+name: Deploy Streamlit App
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'streamlit-app/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to streamlit-deploy branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create an orphan branch with only streamlit-app contents
+          git checkout --orphan streamlit-deploy-temp
+
+          # Move streamlit-app contents to root
+          git rm -rf --cached .
+          mv streamlit-app/* .
+          mv streamlit-app/.* . 2>/dev/null || true
+          rm -rf streamlit-app
+
+          # Stage and commit
+          git add -A
+          git commit -m "Deploy streamlit app from ${GITHUB_SHA::7}"
+
+          # Force push to deployment branch
+          git push origin HEAD:streamlit-deploy --force
