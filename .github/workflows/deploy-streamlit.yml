@@ -21,14 +21,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Create an orphan branch with only streamlit-app contents
-          git checkout --orphan streamlit-deploy-temp
+          # Stash streamlit-app contents outside the repo
+          cp -r streamlit-app /tmp/streamlit-app
 
-          # Move streamlit-app contents to root
-          git rm -rf --cached .
-          mv streamlit-app/* .
-          mv streamlit-app/.* . 2>/dev/null || true
-          rm -rf streamlit-app
+          # Create a clean orphan branch and wipe everything
+          git checkout --orphan streamlit-deploy-temp
+          git rm -rf .
+          rm -rf *
+
+          # Copy only streamlit-app contents to root
+          cp -r /tmp/streamlit-app/* .
 
           # Stage and commit
           git add -A

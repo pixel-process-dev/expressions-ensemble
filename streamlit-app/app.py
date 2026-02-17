@@ -488,4 +488,3 @@ st.markdown("""
     <a href='https://github.com/pixel-process-dev/exaggerated-expressions' target='_blank'>View Source on GitHub</a>
 </div>
 """, unsafe_allow_html=True)
-
