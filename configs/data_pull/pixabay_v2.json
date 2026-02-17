@@ -1,0 +1,35 @@
+{
+  "source": "pixabay",
+
+  "search": {
+    "api_url":"https://pixabay.com/api/",
+    "emotions": {
+      "angry": ["angry", "mad", "irate"],
+      "disgust": ["disgusted", "gross", "repulsed"],
+      "fear": ["fear", "afraid", "scared"],
+      "happy": ["happy", "smiling", "joyful"],
+      "sad": ["sad", "crying", "unhappy"],
+      "surprise": ["surprised", "shocked", "astonished"],
+      "neutral": ["neutral", "calm", "expressionless"]
+    },
+    "keyword_template": "{emotion}",
+    "per_page": 200,
+    "max_pages": 4
+  },
+
+  "output": {
+    "raw_image_dir": "data/raw/pixabay_v2",
+    "manifest_filename": "manifest.parquet",
+    "run_log_filename": "run_log.parquet",
+    "seen_ids_filename": "seen_ids.parquet"
+  },
+
+  "rate_limit": {
+    "min_remaining_requests": 20,
+    "sleep_seconds_on_low_remaining": 30
+  },
+
+  "early_stop": {
+    "min_new_fraction": 0.1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "output_dir": "../configs/aggregation_mixing",
+  "emotions": ["angry", "fear", "happy", "sad", "surprise"],
+  "primary_face": true,
+  
+  "single_sources": {
+    "pexels_v1" : "data/processed/pexels_v1/summaries/training_data.parquet",
+    "pexels_v2" : "data/processed/pexels_v2/summaries/training_data.parquet",
+    "pixabay_v1" : "data/processed/pixabay_v1/summaries/training_data.parquet",
+    "pixabay_v2" : "data/processed/pixabay_v2/summaries/training_data.parquet"
+    },
+
+  "combine_sources": {
+    "pexels_v3": ["pexels_v1", "pexels_v2"],
+    "pixabay_v3": ["pixabay_v1", "pixabay_v2"],
+    "pexpix_v1": ["pexels_v1", "pixabay_v1"],
+    "pexpix_v2": ["pexels_v2", "pixabay_v2"],
+    "pexpix_v3": ["pexels_v1", "pixabay_v1", "pexels_v2", "pixabay_v2"]
+  },
+
+  "fer2013" : "../data/fer-2013/",
+  "raf_db" : "../data/raf-db/DATASET/"
+
+}

@@ -32,6 +32,7 @@ logs/
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+**/.virtual_documents/
 
 # ----------------------------
 # Environments & secrets
