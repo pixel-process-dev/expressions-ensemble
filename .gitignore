@@ -7,6 +7,7 @@ processed/
 archive/ 
 models/
 evaluation/ 
+backup_evaluation/
 
 # ----------------------------
 # Model artifacts
