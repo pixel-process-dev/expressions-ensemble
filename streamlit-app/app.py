@@ -246,7 +246,7 @@ def make_diff_chart(
         fig.add_trace(
             go.Bar(
                 y=labels, x=vals, orientation="h",
-                marker=dict(color=colors, cornerradius=4, line=dict(width=0)),
+                marker=dict(color=colors, line=dict(width=0)),
                 text=text_vals,
                 textposition=["outside" if abs(v) < 5 else "inside" for v in vals],
                 textfont=dict(size=12, color=TEXT_COLOR),
@@ -357,7 +357,7 @@ st.markdown(
 
     Standard benchmark datasets often feature overly exaggerated poses with
     limited ecological validity. Here, rather than relying on test accuracy
-    alone, I ask:
+    alone, we ask:
 
     **Do model predictions make sense in context?**
     """
@@ -631,8 +631,6 @@ with tab_methods:
         animation.
         """
     )
-
-    st.markdown("---")
 
     st.markdown(
         """
